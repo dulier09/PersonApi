@@ -52,6 +52,7 @@ namespace WebApiPerson.Controllers
                 return BadRequest();
             }
 
+            person.UpdateDate = DateTime.Now;
             _context.Entry(person).State = EntityState.Modified;
 
             try
@@ -83,6 +84,8 @@ namespace WebApiPerson.Controllers
                 return BadRequest("El Salario debe ser mayor a cero");
             }
             else {
+                person.CreationDate = DateTime.Now;
+                person.UpdateDate = DateTime.Now;
                 _context.Persons.Add(person);
                 await _context.SaveChangesAsync();
 
